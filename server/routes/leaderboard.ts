@@ -5,9 +5,9 @@ const router = Router()
 
 router.get('/', async (req, res) => {
   try {
-    // const leaders = await db.getTopThree()
-    const leaders = 'test test'
-    console.log(leaders)
+    const leaders = await db.getTopThree()
+    // const leaders = 'test test'
+    // console.log(leaders)
     res.json(leaders)
   } catch (error) {
     console.log(error)
