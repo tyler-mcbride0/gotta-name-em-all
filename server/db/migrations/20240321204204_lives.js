@@ -3,10 +3,8 @@
  * @returns { Promise<void> }
  */
 export function up(knex) {
-  return knex.schema.createTable('leaderboard', function (table) {
-    table.increments('id')
-    table.string('name')
-    table.integer('score')
+  return knex.schema.alterTable('leaderboard', function (table) {
+    table.integer('lives')
   })
 }
 
@@ -15,5 +13,7 @@ export function up(knex) {
  * @returns { Promise<void> }
  */
 export function down(knex) {
-  return knex.schema.dropTable('leaderboard')
+  return knex.schema.alterTable('leaderboard', function (table) {
+    table.dropColumn('lives')
+  })
 }
