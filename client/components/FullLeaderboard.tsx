@@ -3,7 +3,7 @@ import { getLeaderboard } from '../apis/pokemon'
 import Loading from './Loading'
 import { Link } from 'react-router-dom'
 
-function Leaderboard() {
+function FullLeaderboard() {
   const {
     isLoading,
     isError,
@@ -25,9 +25,8 @@ function Leaderboard() {
   return (
     <>
       <div>
-        <h1>
-          <Link to={'/leaderboard'}>Leaderboard</Link>
-        </h1>
+        <h1><Link to={'/'}>Home</Link></h1>
+        <h1>Leaderboard</h1>
       </div>
       <table>
         <tr>
@@ -50,4 +49,4 @@ function Leaderboard() {
   )
 }
 
-export default Leaderboard
+export default FullLeaderboard
