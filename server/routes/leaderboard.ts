@@ -15,7 +15,8 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/submit', async (req, res) => {
+  console.log('route hit')
   try {
     const { name, score, lives } = req.body
     await db.insertScore(name, score, lives)
