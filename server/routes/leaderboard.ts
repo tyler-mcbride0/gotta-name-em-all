@@ -6,9 +6,23 @@ const router = Router()
 router.get('/', async (req, res) => {
   try {
     const leaders = await db.getTopThree()
+
     // const leaders = 'test test'
     // console.log(leaders)
     res.json(leaders)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Something went wrong' })
+  }
+})
+
+router.get('/leaderboard', async (req, res) => {
+  try {
+    const allScores = await db.getAllScores()
+
+    // const leaders = 'test test'
+    // console.log(leaders)
+    res.json(allScores)
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Something went wrong' })

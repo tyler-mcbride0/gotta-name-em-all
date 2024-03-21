@@ -1,37 +1,22 @@
-function Leaderboard() {
-  const Scores = [
-    {
-      id: 1,
-      name: 'Tyler',
-      score: 25,
-      lives: 5,
-    },
-    {
-      id: 2,
-      name: 'Matthew',
-      score: 25,
-      lives: 3,
-    },
-    {
-      id: 3,
-      name: 'Jolon',
-      score: 22,
-      lives: 0,
-    },
-    {
-      id: 4,
-      name: 'Maitri',
-      score: 15,
-      lives: 0,
-    },
-    {
-      id: 5,
-      name: 'David',
-      score: 5,
-      lives: 0,
-    },
-  ]
+import { useQuery } from "@tanstack/react-query"
+import { getLeaderboard } from "../apis/pokemon"
+import Loading from "./Loading"
 
+function Leaderboard() {
+  const { isLoading, isError, data: Scores } = useQuery({
+    queryKey: [],
+    queryFn: async () => getLeaderboard(),
+  })
+  if (isLoading)
+    return (
+      <>
+        <Loading />
+      </>
+    )
+  if (isError) return <div>Error: Something went wrong!</div>
+  if (Scores === undefined){
+    return <div></div>
+  }
   return (
     <>
       <div>

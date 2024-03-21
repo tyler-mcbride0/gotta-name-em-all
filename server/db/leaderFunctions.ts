@@ -14,6 +14,11 @@ export async function getTopThree(): Promise<Leaders[]> {
   return leaders
 }
 
+export async function getAllScores() {
+  const scores = await db('leaderboard')
+  return scores
+}
+
 export async function insertScore(name: string, score: number, lives: number) {
   const result = await db('leaderboard').insert({ name, score, lives })
   console.log('Success', result)
