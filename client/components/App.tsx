@@ -1,4 +1,3 @@
-import { useFruits } from '../hooks/useFruits.ts'
 import Header from './Header.tsx'
 import Leaderboard from './Leaderboard.tsx'
 import PokiGuess from './PokiGuess.tsx'
