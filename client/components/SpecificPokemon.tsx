@@ -13,7 +13,7 @@ export default function SpecificPokemon(params: string) {
   return (
     <>
       <div className="image-container">
-        <img src={`${data?.sprites.front_default}`} />
+        <img className='sprite-image' src={`${data?.sprites.front_default}`} />
       </div>
     </>
   )
