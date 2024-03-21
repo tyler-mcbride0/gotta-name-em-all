@@ -33,7 +33,6 @@ function PokiGuess() {
     if (pokemonList == null) {
       throw new Error('No Data')
     }
-    console.log(pokemonList)
     const randomPokemonSet = new Set<string>()
     while (randomPokemonSet.size != n) {
       const randomIndex = Math.floor(Math.random() * pokemonList.results.length)
@@ -86,43 +85,37 @@ function PokiGuess() {
     }))
   }
 
-  async function handleSubmit(event: React.FormEvent) {
-    event?.preventDefault()
+  async function handleSubmit() {
+    // event?.preventDefault()
 
     console.log(postHighScore)
-    // try {
-    //   const response = await fetch('/api/v1/submit', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(postHighScore),
-    //   })
+    const response = await fetch('/api/v1/leaders/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(postHighScore),
+    })
 
-    
-    //   if (!response.ok) {
-    //     throw new Error('Failed to submit highscore')
-    //   }
+    if (!response.ok) {
+      throw new Error('Failed to submit highscore')
+    }
 
     setpostHighScore({ name: '', score: 0, lives: 5 })
     setPlayerScore(0)
     setPlayerLives(5)
     setGameState(0)
-    // } catch (error) {
-    //   console.error('Error submitting highscore:', error)
-    // }
   }
 
   // gameStates =  Playing (0), gameEnded(1)
 
   // if statement based on gamestate
   if (gameState === 1) {
-            
     return (
       <div>
         <h2>{endMessage}</h2>
         <p>Final Score: {playerScore}</p>
-        <form onSubmit={() => handleSubmit()}>
+        <div>
           <input
             onChange={handleChange}
             type="text"
@@ -131,59 +124,52 @@ function PokiGuess() {
             name="name"
             value={postHighScore.name}
           ></input>
-          <button>Submit Score</button>
-        </form>
+          <button onClick={handleSubmit}>Submit Score</button>
+        </div>
       </div>
     )
   } else if (gameState === 0) {
-            
-            
-            
-            
     return (
       <div className="game-container">
-        
         <div className="top-container">
           <div className="score-container">
             <div className="highscore-container">Score: {playerScore}</div>
             <div className="live-container">Lives: {playerLives}</div>
-           </div>
-          
-          <div className="prompt-container">
-          <SpecificPokemon name={pokemon[0]} />
-         </div>
-        </div>
-       
-       <div className="bottom-container">
-         <div className="trainer-container">
-          <img
-            className="trainer"
-            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d036937d-a72f-43c1-b155-bafe45d2d742/ddtk694-d14642bf-9b73-430a-99c8-2c199bacc469.png/v1/fill/w_580,h_580/ash_ketchum_v2_back_sprite_by_robloxmaster376_ddtk694-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTgwIiwicGF0aCI6IlwvZlwvZDAzNjkzN2QtYTcyZi00M2MxLWIxNTUtYmFmZTQ1ZDJkNzQyXC9kZHRrNjk0LWQxNDY0MmJmLTliNzMtNDMwYS05OWM4LTJjMTk5YmFjYzQ2OS5wbmciLCJ3aWR0aCI6Ijw9NTgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.3uCg4_3dUGDt9emVtJnxxIla67MO7qiJVxNWD37Kn6c"
-            alt="Player trainer"
-          />
-         </div>
-         
-        <div className="button-container">  
-          <div>
-            <button onClick={() => handleClick(event, pokemon[placement[0]])}>
-            {pokemon[placement[0]]}
-            </button>
-            <button onClick={() => handleClick(event, pokemon[placement[1]])}>
-            {pokemon[placement[1]]}
-            </button>
           </div>
-          <div>
-            <button onClick={() => handleClick(event, pokemon[placement[2]])}>
-            {pokemon[placement[2]]}
-            </button>
-            <button onClick={() => handleClick(event, pokemon[placement[3]])}>
-            {pokemon[placement[3]]}
-            </button>
-          </div>   
-         </div>
-   
+
+          <div className="prompt-container">
+            <SpecificPokemon name={pokemon[0]} />
+          </div>
         </div>
 
+        <div className="bottom-container">
+          <div className="trainer-container">
+            <img
+              className="trainer"
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d036937d-a72f-43c1-b155-bafe45d2d742/ddtk694-d14642bf-9b73-430a-99c8-2c199bacc469.png/v1/fill/w_580,h_580/ash_ketchum_v2_back_sprite_by_robloxmaster376_ddtk694-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTgwIiwicGF0aCI6IlwvZlwvZDAzNjkzN2QtYTcyZi00M2MxLWIxNTUtYmFmZTQ1ZDJkNzQyXC9kZHRrNjk0LWQxNDY0MmJmLTliNzMtNDMwYS05OWM4LTJjMTk5YmFjYzQ2OS5wbmciLCJ3aWR0aCI6Ijw9NTgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.3uCg4_3dUGDt9emVtJnxxIla67MO7qiJVxNWD37Kn6c"
+              alt="Player trainer"
+            />
+          </div>
+
+          <div className="button-container">
+            <div>
+              <button onClick={() => handleClick(event, pokemon[placement[0]])}>
+                {pokemon[placement[0]]}
+              </button>
+              <button onClick={() => handleClick(event, pokemon[placement[1]])}>
+                {pokemon[placement[1]]}
+              </button>
+            </div>
+            <div>
+              <button onClick={() => handleClick(event, pokemon[placement[2]])}>
+                {pokemon[placement[2]]}
+              </button>
+              <button onClick={() => handleClick(event, pokemon[placement[3]])}>
+                {pokemon[placement[3]]}
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     )
   } else {
