@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import SpecificPokemon from './SpecificPokemon'
 
 function PokiGuess() {
+  const [score, setScore] = useState(0)
   const { isLoading, isError, data } = useQuery({
     queryKey: ['randomPokemon'],
     queryFn: async () => getAllPokemon(),
@@ -25,6 +26,8 @@ function PokiGuess() {
   const randomPokemon = chooseRandomPokemon(data, 4)
   console.log(randomPokemon)
 
+  const handleAnswer = () => {}
+
   // 1 Correct (Name + Sprite), 3 Wrong(Name)
 
   // Renders Sprite, with a class that makes black (0% brightness), onAnswer - makes 100% brightness
@@ -35,6 +38,7 @@ function PokiGuess() {
   const Answered = 'true'
   return (
     <div>
+      <div className="highscore-container">{score}</div>
       <div className="prompt-container">
         <SpecificPokemon name={`${randomPokemon[0]}`} />
       </div>
@@ -43,7 +47,7 @@ function PokiGuess() {
         src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d036937d-a72f-43c1-b155-bafe45d2d742/ddtk694-d14642bf-9b73-430a-99c8-2c199bacc469.png/v1/fill/w_580,h_580/ash_ketchum_v2_back_sprite_by_robloxmaster376_ddtk694-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTgwIiwicGF0aCI6IlwvZlwvZDAzNjkzN2QtYTcyZi00M2MxLWIxNTUtYmFmZTQ1ZDJkNzQyXC9kZHRrNjk0LWQxNDY0MmJmLTliNzMtNDMwYS05OWM4LTJjMTk5YmFjYzQ2OS5wbmciLCJ3aWR0aCI6Ijw9NTgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.3uCg4_3dUGDt9emVtJnxxIla67MO7qiJVxNWD37Kn6c"
       />
       <div className="button-container">
-        <button>{randomPokemon[0]}</button>
+        <button onClick={handleAnswer}>{randomPokemon[0]}</button>
         <button>{randomPokemon[1]}</button>
         <button>{randomPokemon[2]}</button>
         <button>{randomPokemon[3]}</button>
