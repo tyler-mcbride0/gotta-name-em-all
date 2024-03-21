@@ -78,17 +78,17 @@ function PokiGuess() {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget
-    setpostHighScore((prev) => ({ ...prev, [name]: value }))
+    setpostHighScore((prev) => ({
+      ...prev,
+      [name]: value,
+      score: playerScore,
+      lives: playerLives,
+    }))
   }
 
   async function handleSubmit(event: React.FormEvent) {
     event?.preventDefault()
 
-    setpostHighScore((prev) => ({
-      ...prev,
-      score: playerScore,
-      lives: playerLives,
-    }))
     console.log(postHighScore)
     // try {
     //   const response = await fetch('/api/v1/submit', {
