@@ -40,3 +40,7 @@ export interface Sprites {
   front_shiny: string
   front_shiny_female: null
 }
+
+export interface SpecificPokemonProps {
+  name: string
+}

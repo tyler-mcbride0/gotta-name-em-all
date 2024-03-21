@@ -7,6 +7,7 @@ export function up(knex) {
     table.increments('id')
     table.string('name')
     table.integer('score')
+    table.integer('lives')
   })
 }
 

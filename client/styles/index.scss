@@ -19,6 +19,11 @@ body {
   align-items: center;
 }
 
+.loading-container > img {
+  width: 25%;
+  filter: brightness(100%)
+}
+
 .game-container {
   display: flex;
   flex-direction: column;
