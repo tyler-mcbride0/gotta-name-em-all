@@ -17,8 +17,8 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { name, score } = req.body
-    await db.insertScore(name, score)
+    const { name, score, lives } = req.body
+    await db.insertScore(name, score, lives)
     res.send('Success! Score added')
   } catch (error) {
     console.log(error)
