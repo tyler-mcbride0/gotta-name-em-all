@@ -6,9 +6,6 @@ const router = Router()
 router.get('/', async (req, res) => {
   try {
     const leaders = await db.getTopThree()
-
-    // const leaders = 'test test'
-    // console.log(leaders)
     res.json(leaders)
   } catch (error) {
     console.log(error)
@@ -16,12 +13,12 @@ router.get('/', async (req, res) => {
   }
 })
 
+
 router.get('/leaderboard', async (req, res) => {
   try {
     const allScores = await db.getAllScores()
 
-    // const leaders = 'test test'
-    // console.log(leaders)
+
     res.json(allScores)
   } catch (error) {
     console.log(error)
@@ -29,7 +26,10 @@ router.get('/leaderboard', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+
+router.post('/submit', async (req, res) => {
+
+
   try {
     const { name, score, lives } = req.body
     await db.insertScore(name, score, lives)
