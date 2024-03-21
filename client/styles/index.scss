@@ -90,3 +90,32 @@ button:hover {
   background-color: #ffffff;
   color: #3498db;
 }
+
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  cursor: default;
+}
+
+tr {
+  border-radius: 0.2rem;
+}
+
+
+tr:nth-child(odd) {
+  background-color: lightsalmon;
+}
+tr:nth-child(even) {
+  background-color: lightpink;
+}
+
+td {
+  height: 5rem;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  position: relative;
+  color: #141a39;
+}
