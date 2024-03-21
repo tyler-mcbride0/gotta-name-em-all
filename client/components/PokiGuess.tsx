@@ -19,6 +19,7 @@ function PokiGuess() {
     score: 0,
     lives: 5,
   })
+  const [endMessage, setEndMessage] = useState('Error')
 
   const { isLoading, isError, data } = useQuery({
     queryKey: ['randomPokemon'],
@@ -61,14 +62,14 @@ function PokiGuess() {
     setPokemon(randomPokemon)
     checkEnd()
   }
-  let gameEndMessage = 'Test'
+
   function checkEnd() {
     if (playerScore === 9) {
-      gameEndMessage = "You've beaten the game! Great Job"
+      setEndMessage("You've beaten the game! Great Job")
       setGameState(1)
       console.log('you won')
     } else if (playerLives === 1) {
-      gameEndMessage = "Uh Oh! You've run out of Lives"
+      setEndMessage("Uh Oh! You've run out of Lives")
       setGameState(1)
       console.log('game over')
     }
@@ -117,7 +118,7 @@ function PokiGuess() {
   if (gameState === 1) {
     return (
       <div>
-        <h2>{gameEndMessage}</h2>
+        <h2>{endMessage}</h2>
         <p>Final Score: {playerScore}</p>
         <form onSubmit={() => handleSubmit()}>
           <input
