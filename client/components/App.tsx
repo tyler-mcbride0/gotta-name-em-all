@@ -4,16 +4,14 @@ import Leaderboard from './Leaderboard.tsx'
 import PokiGuess from './PokiGuess.tsx'
 
 function App() {
-  const { data } = useFruits()
-
   return (
-    <>
-      <div>
-        <Header />
+    <div className="main-container">
+      <Header />
+      <div className="game-container">
         <PokiGuess />
-        <Leaderboard />
       </div>
-    </>
+      <Leaderboard />
+    </div>
   )
 }
 
