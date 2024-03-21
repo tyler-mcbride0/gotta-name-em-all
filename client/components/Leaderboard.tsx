@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { getLeaderboard } from '../apis/pokemon'
 import Loading from './Loading'
+import { Link } from 'react-router-dom'
 
 function Leaderboard() {
   const {
