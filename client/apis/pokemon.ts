@@ -6,8 +6,9 @@ export async function getAllPokemon() {
   return res.body as SearchResult
 }
 
-export async function getSpecificPokemon(URL) {
-  const res = await request.get(`${URL}`)
+export async function getSpecificPokemon(name: string) {
+  console.log(name)
+  const res = await request.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
   return res.body as Pokemon
 }
 

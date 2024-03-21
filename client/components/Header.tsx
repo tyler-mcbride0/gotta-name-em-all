@@ -1,7 +1,7 @@
 function Header() {
   return (
     <>
-      <div>
+      <div className="header-container">
         <h2>Gotta Name 'em All</h2>
       </div>
     </>

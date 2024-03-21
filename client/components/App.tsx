@@ -5,13 +5,13 @@ import PokiGuess from './PokiGuess.tsx'
 
 function App() {
   return (
-    <>
-      <div>
-        <Header />
+    <div className="main-container">
+      <Header />
+      <div className="game-container">
         <PokiGuess />
-        <Leaderboard />
       </div>
-    </>
+      <Leaderboard />
+    </div>
   )
 }
 
