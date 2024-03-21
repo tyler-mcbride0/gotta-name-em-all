@@ -10,6 +10,11 @@ body {
   filter: brightness(0%)
 }
 
+.loading-container > img {
+  width: 25%;
+  filter: brightness(100%)
+}
+
 .game-container {
   flex: 1;
   height: 100vh;
