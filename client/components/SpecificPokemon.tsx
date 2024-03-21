@@ -21,6 +21,7 @@ export default function SpecificPokemon(params: SpecificPokemonProps) {
     <>
       <div className="image-container">
         <img
+          className='sprite-image'
           src={`${data?.sprites.front_default}`}
           alt="a mysterious pokemon"
         />

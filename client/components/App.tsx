@@ -7,9 +7,7 @@ function App() {
   return (
     <div className="main-container">
       <Header />
-      <div className="game-container">
-        <PokiGuess />
-      </div>
+      <PokiGuess />
       <Leaderboard />
     </div>
   )
