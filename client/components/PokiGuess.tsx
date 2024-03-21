@@ -153,18 +153,30 @@ function PokiGuess() {
 
           <div className="button-container">
             <div>
-              <button onClick={() => handleClick(event, pokemon[placement[0]])}>
+              <button
+                className="button1"
+                onClick={() => handleClick(event, pokemon[placement[0]])}
+              >
                 {pokemon[placement[0]]}
               </button>
-              <button onClick={() => handleClick(event, pokemon[placement[1]])}>
+              <button
+                className="button2"
+                onClick={() => handleClick(event, pokemon[placement[1]])}
+              >
                 {pokemon[placement[1]]}
               </button>
             </div>
             <div>
-              <button onClick={() => handleClick(event, pokemon[placement[2]])}>
+              <button
+                className="button3"
+                onClick={() => handleClick(event, pokemon[placement[2]])}
+              >
                 {pokemon[placement[2]]}
               </button>
-              <button onClick={() => handleClick(event, pokemon[placement[3]])}>
+              <button
+                className="button4"
+                onClick={() => handleClick(event, pokemon[placement[3]])}
+              >
                 {pokemon[placement[3]]}
               </button>
             </div>

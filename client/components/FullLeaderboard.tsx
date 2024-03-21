@@ -24,27 +24,31 @@ function FullLeaderboard() {
   }
   return (
     <>
-      <div>
-        <h1><Link to={'/'}>Home</Link></h1>
-        <h1>Leaderboard</h1>
-      </div>
-      <table>
-        <tr>
-          <td>Rank</td>
-          <td>Name</td>
-          <td>HighScore</td>
-          <td>Lives</td>
-        </tr>
-
-        {Scores.map((score) => (
-          <tr key={score.id}>
-            <td>{score.id}</td>
-            <td>{score.name}</td>
-            <td>{score.score}</td>
-            <td>{score.lives}</td>
+      <div className="newPage-container">
+        <div>
+          <h1>
+            <Link to={'/'}>Home</Link>
+          </h1>
+          <h1>Leaderboard</h1>
+        </div>
+        <table>
+          <tr>
+            <td>Rank</td>
+            <td>Name</td>
+            <td>HighScore</td>
+            <td>Lives</td>
           </tr>
-        ))}
-      </table>
+
+          {Scores.map((score) => (
+            <tr key={score.id}>
+              <td>{score.id}</td>
+              <td>{score.name}</td>
+              <td>{score.score}</td>
+              <td>{score.lives}</td>
+            </tr>
+          ))}
+        </table>
+      </div>
     </>
   )
 }
