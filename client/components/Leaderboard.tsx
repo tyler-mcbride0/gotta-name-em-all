@@ -1,9 +1,13 @@
-import { useQuery } from "@tanstack/react-query"
-import { getLeaderboard } from "../apis/pokemon"
-import Loading from "./Loading"
+import { useQuery } from '@tanstack/react-query'
+import { getLeaderboard } from '../apis/pokemon'
+import Loading from './Loading'
 
 function Leaderboard() {
-  const { isLoading, isError, data: Scores } = useQuery({
+  const {
+    isLoading,
+    isError,
+    data: Scores,
+  } = useQuery({
     queryKey: [],
     queryFn: async () => getLeaderboard(),
   })
@@ -14,9 +18,11 @@ function Leaderboard() {
       </>
     )
   if (isError) return <div>Error: Something went wrong!</div>
-  if (Scores === undefined){
+  if (Scores === undefined) {
     return <div></div>
   }
+
+  // const rank = 1
   return (
     <>
       <div>
@@ -30,14 +36,49 @@ function Leaderboard() {
           <td>Lives</td>
         </tr>
 
-        {Scores.map((score) => (
+        {Scores.map((score, index) => (
           <tr key={score.id}>
-            <td>{score.id}</td>
+            <td>
+              {index + 1}
+              {index === 0 ? (
+                <img
+                  src="../../public/images/01-Gold Medal.png"
+                  alt="Gold medal"
+                />
+              ) : index === 1 ? (
+                <img
+                  src="../../public/images/02-Silver Medal.png"
+                  alt="Silver medal"
+                />
+              ) : index === 2 ? (
+                <img
+                  src="../../public/images/03-Bronze Medal.png"
+                  alt="Bronze medal"
+                />
+              ) : null}
+            </td>
             <td>{score.name}</td>
             <td>{score.score}</td>
             <td>{score.lives}</td>
           </tr>
         ))}
+
+        {/* {Scores.map((score) => (
+          <tr key={score.id}>
+            <td>
+              {rank++}
+              {rank == 1 && (
+                <img
+                  src="../../public/images/01-Gold Medal.png"
+                  alt="Gold medal"
+                ></img>
+              )}
+            </td>
+            <td>{score.name}</td>
+            <td>{score.score}</td>
+            <td>{score.lives}</td>
+          </tr>
+        ))} */}
       </table>
     </>
   )
