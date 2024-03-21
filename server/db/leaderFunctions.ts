@@ -6,15 +6,16 @@ const db = connection
 
 export async function getTopThree(): Promise<Leaders[]> {
   const leaders = db('leaderboard')
-    .select('name', 'score')
+    .select('name', 'score', 'lives')
     .orderBy('score', 'desc')
+    .orderBy('lives', 'desc')
     .limit(3)
   console.log('Succes', leaders)
   return leaders
 }
 
-export async function insertScore(name: string, score: number) {
-  const result = await db('leaderboard').insert({ name, score })
+export async function insertScore(name: string, score: number, lives: number) {
+  const result = await db('leaderboard').insert({ name, score, lives })
   console.log('Success', result)
   return result
 }
