@@ -26,10 +26,17 @@ function FullLeaderboard() {
     <>
       <div className="newPage-container">
         <div>
+          <img
+            src="../../images/Leaderboard-3-22-2024.png"
+            alt=""
+            style={{
+              width: '700px',
+              height: 'auto',
+            }}
+          />
           <h1>
             <Link to={'/'}>Home</Link>
           </h1>
-          <h1>Leaderboard</h1>
         </div>
         <table>
           <tr>
