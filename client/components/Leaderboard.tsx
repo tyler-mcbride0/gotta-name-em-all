@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getLeaderboard } from '../apis/pokemon'
+import { getBoard } from '../apis/pokemon'
 import Loading from './Loading'
 import { Link } from 'react-router-dom'
 
@@ -10,7 +10,7 @@ function Leaderboard() {
     data: Scores,
   } = useQuery({
     queryKey: [],
-    queryFn: async () => getLeaderboard(),
+    queryFn: async () => getBoard(),
   })
   if (isLoading)
     return (
