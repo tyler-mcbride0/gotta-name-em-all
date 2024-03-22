@@ -13,6 +13,11 @@ export async function getSpecificPokemon(name: string) {
 }
 
 export async function getLeaderboard() {
+  const res = await request.get(`/api/v1/leaders/leaderboardFull`)
+  return res.body as Leaderboard
+}
+
+export async function getBoard() {
   const res = await request.get(`/api/v1/leaders/leaderboard`)
   return res.body as Leaderboard
 }

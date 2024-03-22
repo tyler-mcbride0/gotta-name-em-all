@@ -13,16 +13,16 @@ router.get('/leaderboard', async (req, res) => {
   }
 })
 
-// router.get('/leaderboard', async (req, res) => {
-//   try {
-//     const allScores = await db.getAllScores()
+router.get('/leaderboardFull', async (req, res) => {
+  try {
+    const allScores = await db.getAllScores()
 
-//     res.json(allScores)
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500).json({ message: 'Something went wrong' })
-//   }
-// })
+    res.json(allScores)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Something went wrong' })
+  }
+})
 
 router.post('/submit', async (req, res) => {
   try {
