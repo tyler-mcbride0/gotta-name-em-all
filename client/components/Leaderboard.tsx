@@ -42,7 +42,6 @@ function Leaderboard() {
         {Scores.map((score, index) => (
           <tr key={score.id}>
             <td>
-              {index + 1}
               {index === 0 ? (
                 <img
                   src="../../public/images/01-Gold Medal.png"
@@ -58,7 +57,9 @@ function Leaderboard() {
                   src="../../public/images/03-Bronze Medal.png"
                   alt="Bronze medal"
                 />
-              ) : null}
+              ) : (
+                <h3>&nbsp;&nbsp;&nbsp;{index + 1} </h3>
+              )}
             </td>
             <td>{score.name}</td>
             <td>{score.score}</td>
