@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getAllPokemon } from '../apis/pokemon'
 import { useQuery } from '@tanstack/react-query'
 import SpecificPokemon from './SpecificPokemon'
@@ -73,6 +73,7 @@ function PokiGuess() {
       console.log('game over')
     }
   }
+
   shuffleArray(placement)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,9 +87,9 @@ function PokiGuess() {
   }
 
   async function handleSubmit() {
-    // event?.preventDefault()
-
-    console.log(postHighScore)
+    if (postHighScore.name == '') {
+      return
+    }
     const response = await fetch('/api/v1/leaders/submit', {
       method: 'POST',
       headers: {
@@ -100,33 +101,30 @@ function PokiGuess() {
     if (!response.ok) {
       throw new Error('Failed to submit highscore')
     }
-
     setpostHighScore({ name: '', score: 0, lives: 5 })
     setPlayerScore(0)
     setPlayerLives(5)
     setGameState(0)
   }
-
   // gameStates =  Playing (0), gameEnded(1)
-
-  // if statement based on gamestate
   if (gameState === 1) {
     return (
       <div className="end-container">
-        <div className="end-screen">
-          <h2>{endMessage}</h2>
-          <p>Final Score: {playerScore}</p>
-          <div>
-            <input
-              onChascreennge={handleChange}
-              type="text"
-              placeholder="Name"
-              id="name"
-              name="name"
-              value={postHighScore.name}
-            ></input>
-            <button onClick={handleSubmit}>Submit Score</button>
-          </div>
+        <h2>{endMessage}</h2>
+        <p>Final Score: {playerScore}</p>
+        <div>
+          <input
+            className="end-input"
+            onChange={handleChange}
+            type="text"
+            placeholder="Name"
+            id="name"
+            name="name"
+            value={postHighScore.name}
+          ></input>
+          <button className="end-button" onClick={handleSubmit}>
+            Submit Score
+          </button>
         </div>
       </div>
     )
@@ -138,12 +136,10 @@ function PokiGuess() {
             <div className="highscore-container">Score: {playerScore}</div>
             <div className="live-container">Lives: {playerLives}</div>
           </div>
-
           <div className="prompt-container">
             <SpecificPokemon name={pokemon[0]} />
           </div>
         </div>
-
         <div className="bottom-container">
           <div className="trainer-container">
             <img
@@ -152,7 +148,6 @@ function PokiGuess() {
               alt="Player trainer"
             />
           </div>
-
           <div className="button-container">
             <div>
               <button
