@@ -49,6 +49,11 @@ function PokiGuess() {
     }
   }
 
+  function playCorrect() {}
+  function playIncorrect() {}
+
+  useEffect(() => {}, [playerScore])
+
   const handleClick = (event, guessedPokemon: string) => {
     event.preventDefault()
     const randomPokemon = chooseRandomPokemon(4, data)
