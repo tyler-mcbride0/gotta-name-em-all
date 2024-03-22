@@ -4,12 +4,12 @@ import { Leaders } from '../../models/leaderInterface.ts'
 
 const db = connection
 
-export async function getTopThree(): Promise<Leaders[]> {
+export async function getTopFive(): Promise<Leaders[]> {
   const leaders = db('leaderboard')
     .select('name', 'score', 'lives')
     .orderBy('score', 'desc')
     .orderBy('lives', 'desc')
-    .limit(3)
+    .limit(5)
   console.log('Succes', leaders)
   return leaders
 }
