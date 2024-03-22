@@ -15,6 +15,8 @@ export async function getTopFive(): Promise<Leaders[]> {
 
 export async function getAllScores() {
   const scores = await db('leaderboard')
+    .orderBy('score', 'desc')
+    .orderBy('lives', 'desc')
   return scores
 }
 
