@@ -43,20 +43,11 @@ function Leaderboard() {
           <tr key={score.id}>
             <td>
               {index === 0 ? (
-                <img
-                  src="../../public/images/01-Gold Medal.png"
-                  alt="Gold medal"
-                />
+                <img src="/images/01-Gold Medal.png" alt="Gold medal" />
               ) : index === 1 ? (
-                <img
-                  src="../../public/images/02-Silver Medal.png"
-                  alt="Silver medal"
-                />
+                <img src="/images/02-Silver Medal.png" alt="Silver medal" />
               ) : index === 2 ? (
-                <img
-                  src="../../public/images/03-Bronze Medal.png"
-                  alt="Bronze medal"
-                />
+                <img src="/images/03-Bronze Medal.png" alt="Bronze medal" />
               ) : (
                 <h3>&nbsp;&nbsp;&nbsp;{index + 1} </h3>
               )}
