@@ -22,6 +22,7 @@ body {
 // Game
 
 .game-container {
+  border: solid;
   margin: 0;
   padding: 0;
   display: flex;
@@ -32,6 +33,21 @@ body {
   height: 600px;
   background-repeat: no-repeat;
   background-image: url('https://cdn.discordapp.com/attachments/436519510833364992/1220259736759304255/qgOjR1.png?ex=660e4a70&is=65fbd570&hm=deeb52ca9914e244d156ef31929576c908819db93d18a8a0033cb7115681e022&');
+}
+.end-container {
+  border: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  margin: 0;
+  padding: 0;
+  width: 1000px;
+  height: 600px;
+}
+
+.end-screen{
+  padding-top: 200px;
 }
 
 // -- Top --
@@ -47,18 +63,19 @@ body {
 // Stats
 .score-container{
   width: 500px;
-  border:solid;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
   align-items: center;
 }
 .highscore-container{
   font-size: 50px;
+  font-family: 'Orbitron', 'san-serif';
 
 }
 .live-container{
   font-size: 30px;
+  font-family: 'Orbitron', 'san-serif';
 
 }
 .image-container {

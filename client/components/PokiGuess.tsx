@@ -112,19 +112,21 @@ function PokiGuess() {
   // if statement based on gamestate
   if (gameState === 1) {
     return (
-      <div>
-        <h2>{endMessage}</h2>
-        <p>Final Score: {playerScore}</p>
-        <div>
-          <input
-            onChange={handleChange}
-            type="text"
-            placeholder="Name"
-            id="name"
-            name="name"
-            value={postHighScore.name}
-          ></input>
-          <button onClick={handleSubmit}>Submit Score</button>
+      <div className="end-container">
+        <div className="end-screen">
+          <h2>{endMessage}</h2>
+          <p>Final Score: {playerScore}</p>
+          <div>
+            <input
+              onChascreennge={handleChange}
+              type="text"
+              placeholder="Name"
+              id="name"
+              name="name"
+              value={postHighScore.name}
+            ></input>
+            <button onClick={handleSubmit}>Submit Score</button>
+          </div>
         </div>
       </div>
     )
