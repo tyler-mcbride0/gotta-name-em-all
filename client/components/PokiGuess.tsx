@@ -49,10 +49,10 @@ function PokiGuess() {
     }
   }
 
-  function playCorrect() {}
-  function playIncorrect() {}
+  // function playCorrect() {}
+  // function playIncorrect() {}
 
-  useEffect(() => {}, [playerScore])
+  // useEffect(() => {}, [playerScore])
 
   const handleClick = (event, guessedPokemon: string) => {
     event.preventDefault()
