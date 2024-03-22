@@ -82,7 +82,7 @@ function PokiGuess() {
   }
 
   function checkEnd() {
-    if (playerScore === 9) {
+    if (playerScore === 49) {
       setEndMessage("You've beaten the game! Great Job")
       setGameState(1)
       console.log('you won')
