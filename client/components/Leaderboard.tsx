@@ -66,23 +66,6 @@ function Leaderboard() {
             <td>{score.lives}</td>
           </tr>
         ))}
-
-        {/* {Scores.map((score) => (
-          <tr key={score.id}>
-            <td>
-              {rank++}
-              {rank == 1 && (
-                <img
-                  src="../../public/images/01-Gold Medal.png"
-                  alt="Gold medal"
-                ></img>
-              )}
-            </td>
-            <td>{score.name}</td>
-            <td>{score.score}</td>
-            <td>{score.lives}</td>
-          </tr>
-        ))} */}
       </table>
     </>
   )
