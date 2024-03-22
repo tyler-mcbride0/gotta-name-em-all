@@ -3,72 +3,135 @@
 html, 
 body {
   font-family: 'Montserrat', sans-serif;
+  margin: 0px;
 }
 
+// Page
 
-.sprite-image{
-  width: 10rem;
+.main-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgray;
 }
 .header-container {
   flex: 1;
 }
 
-.main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.loading-container > img {
-  width: 25%;
-  filter: brightness(100%)
-}
+// Game
 
 .game-container {
+  border: solid;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   background-color: lightblue;
-  width: 60vw;
-  height: 70vh;
+  width: 1000px;
+  height: 600px;
   background-repeat: no-repeat;
   background-image: url('https://cdn.discordapp.com/attachments/436519510833364992/1220259736759304255/qgOjR1.png?ex=660e4a70&is=65fbd570&hm=deeb52ca9914e244d156ef31929576c908819db93d18a8a0033cb7115681e022&');
 }
+.end-container {
+  border: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 1000px;
+  height: 600px;
+}
 
+// -- Top --
 
 .top-container{
+  margin: 0;
+  padding: 0;
+  height: 300px;
   display: flex;
   justify-content: space-between;
-}
-.highscore-container{
-  font-size: 3rem;
-  background-color: lightgray;
-}
-.prompt-container{
-  background-color: aquamarine;
-}
-.image-container {
-  filter: brightness(0%)
 }
 
+// Stats
+.score-container{
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-evenly;
+  align-items: center;
+}
+.highscore-container{
+  font-size: 50px;
+  font-family: 'Orbitron', 'san-serif';
+
+}
+.live-container{
+  font-size: 30px;
+  font-family: 'Orbitron', 'san-serif';
+
+}
+.image-container {
+  width: 500px;
+  filter: brightness(0%);
+  display: flex;
+  flex-direction: row-reverse;
+
+}
+
+// Image
+.image-container{
+  padding: 30px;
+}
+.sprite-image{
+  width: 300px;
+}
+.loading-container > img {
+  width: 300px;
+  filter: brightness(100%)
+}
+
+// -- Bottom --
+
 .bottom-container{
+  margin: 0;
+  padding: 0;
+  height: 150px;
   display: flex;
   justify-content: space-between;
 }
+
+// Player
+
 .trainer-container{
-  background-color: lightblue;
-}
-.button-container{
+  height: 10px;
+  width: 400px;
+  margin: 5px; 
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
 }
+
 .trainer{
-  height: 20vh;
-  // background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d036937d-a72f-43c1-b155-bafe45d2d742/ddtk694-d14642bf-9b73-430a-99c8-2c199bacc469.png/v1/fill/w_580,h_580/ash_ketchum_v2_back_sprite_by_robloxmaster376_ddtk694-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTgwIiwicGF0aCI6IlwvZlwvZDAzNjkzN2QtYTcyZi00M2MxLWIxNTUtYmFmZTQ1ZDJkNzQyXC9kZHRrNjk0LWQxNDY0MmJmLTliNzMtNDMwYS05OWM4LTJjMTk5YmFjYzQ2OS5wbmciLCJ3aWR0aCI6Ijw9NTgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.3uCg4_3dUGDt9emVtJnxxIla67MO7qiJVxNWD37Kn6c')
+  height: 280px;;
+}
+
+// Buttons
+.button-container{
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 button {
+  height: 63px;
+  width: 188px;
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -76,10 +139,9 @@ button {
   text-align: center;
   text-transform: uppercase;
   color: #ffffff;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 10px;
   background-color: #3498db;
-  border: 2px solid #3498db;
+  border: 2px solid #000509;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
@@ -88,9 +150,38 @@ button {
 
 button:hover {
   background-color: #ffffff;
-  color: #3498db;
+  color: #1f1b1b;
 }
 
+.button1{
+  background-color: #ba4b52
+}
+.button2{
+  background-color: #dd9933
+}
+.button3{
+  background-color: #67a547
+}
+.button4{
+  background-color: #258fc9
+}
+.end-button{
+  scale: 70%;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.end-input{
+  margin: 0;
+  height: 23px;
+  text-align: center;
+  border: solid ;
+  border-width: 0.5px;
+  border-radius: 5px;
+}
+
+// -- Leaderboard --
 
 table {
   width: 50%;
@@ -102,7 +193,6 @@ table {
 tr {
   border-radius: 0.2rem;
 }
-
 
 tr:nth-child(odd) {
   background-color: lightsalmon;
@@ -118,4 +208,14 @@ td {
   padding: 1rem 2rem;
   position: relative;
   color: #141a39;
+}
+
+
+// -- FullLeaderboard --
+
+.newPage-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgray;
 }

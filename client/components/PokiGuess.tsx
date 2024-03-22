@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getAllPokemon } from '../apis/pokemon'
 import { useQuery } from '@tanstack/react-query'
 import SpecificPokemon from './SpecificPokemon'
@@ -49,6 +49,11 @@ function PokiGuess() {
     }
   }
 
+  function playCorrect() {}
+  function playIncorrect() {}
+
+  useEffect(() => {}, [playerScore])
+
   const handleClick = (event, guessedPokemon: string) => {
     event.preventDefault()
     const randomPokemon = chooseRandomPokemon(4, data)
@@ -73,6 +78,7 @@ function PokiGuess() {
       console.log('game over')
     }
   }
+
   shuffleArray(placement)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,9 +92,9 @@ function PokiGuess() {
   }
 
   async function handleSubmit() {
-    // event?.preventDefault()
-
-    console.log(postHighScore)
+    if (postHighScore.name == '') {
+      return
+    }
     const response = await fetch('/api/v1/leaders/submit', {
       method: 'POST',
       headers: {
@@ -100,23 +106,20 @@ function PokiGuess() {
     if (!response.ok) {
       throw new Error('Failed to submit highscore')
     }
-
     setpostHighScore({ name: '', score: 0, lives: 5 })
     setPlayerScore(0)
     setPlayerLives(5)
     setGameState(0)
   }
-
   // gameStates =  Playing (0), gameEnded(1)
-
-  // if statement based on gamestate
   if (gameState === 1) {
     return (
-      <div>
+      <div className="end-container">
         <h2>{endMessage}</h2>
         <p>Final Score: {playerScore}</p>
         <div>
           <input
+            className="end-input"
             onChange={handleChange}
             type="text"
             placeholder="Name"
@@ -124,7 +127,9 @@ function PokiGuess() {
             name="name"
             value={postHighScore.name}
           ></input>
-          <button onClick={handleSubmit}>Submit Score</button>
+          <button className="end-button" onClick={handleSubmit}>
+            Submit Score
+          </button>
         </div>
       </div>
     )
@@ -136,12 +141,10 @@ function PokiGuess() {
             <div className="highscore-container">Score: {playerScore}</div>
             <div className="live-container">Lives: {playerLives}</div>
           </div>
-
           <div className="prompt-container">
             <SpecificPokemon name={pokemon[0]} />
           </div>
         </div>
-
         <div className="bottom-container">
           <div className="trainer-container">
             <img
@@ -150,21 +153,32 @@ function PokiGuess() {
               alt="Player trainer"
             />
           </div>
-
           <div className="button-container">
             <div>
-              <button onClick={() => handleClick(event, pokemon[placement[0]])}>
+              <button
+                className="button1"
+                onClick={() => handleClick(event, pokemon[placement[0]])}
+              >
                 {pokemon[placement[0]]}
               </button>
-              <button onClick={() => handleClick(event, pokemon[placement[1]])}>
+              <button
+                className="button2"
+                onClick={() => handleClick(event, pokemon[placement[1]])}
+              >
                 {pokemon[placement[1]]}
               </button>
             </div>
             <div>
-              <button onClick={() => handleClick(event, pokemon[placement[2]])}>
+              <button
+                className="button3"
+                onClick={() => handleClick(event, pokemon[placement[2]])}
+              >
                 {pokemon[placement[2]]}
               </button>
-              <button onClick={() => handleClick(event, pokemon[placement[3]])}>
+              <button
+                className="button4"
+                onClick={() => handleClick(event, pokemon[placement[3]])}
+              >
                 {pokemon[placement[3]]}
               </button>
             </div>
