@@ -25,7 +25,9 @@ function FullLeaderboard() {
   return (
     <>
       <div>
-        <h1><Link to={'/'}>Home</Link></h1>
+        <h1>
+          <Link to={'/'}>Home</Link>
+        </h1>
         <h1>Leaderboard</h1>
       </div>
       <table>
@@ -36,9 +38,28 @@ function FullLeaderboard() {
           <td>Lives</td>
         </tr>
 
-        {Scores.map((score) => (
+        {Scores.map((score, index) => (
           <tr key={score.id}>
-            <td>{score.id}</td>
+            <td>
+              {index === 0 ? (
+                <img
+                  src="../../public/images/01-Gold Medal.png"
+                  alt="Gold medal"
+                />
+              ) : index === 1 ? (
+                <img
+                  src="../../public/images/02-Silver Medal.png"
+                  alt="Silver medal"
+                />
+              ) : index === 2 ? (
+                <img
+                  src="../../public/images/03-Bronze Medal.png"
+                  alt="Bronze medal"
+                />
+              ) : (
+                <h3>&nbsp;&nbsp;&nbsp;{index + 1} </h3>
+              )}
+            </td>
             <td>{score.name}</td>
             <td>{score.score}</td>
             <td>{score.lives}</td>
