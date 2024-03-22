@@ -3,6 +3,8 @@ import { getAllPokemon } from '../apis/pokemon'
 import { useQuery } from '@tanstack/react-query'
 import SpecificPokemon from './SpecificPokemon'
 import { SearchResult } from '../../models/pokemon'
+import correct from '/sounds/correctding.mp3'
+import incorrect from '/sounds/incorrectdud.mp3'
 
 function PokiGuess() {
   const [playerScore, setPlayerScore] = useState(0)
@@ -20,6 +22,14 @@ function PokiGuess() {
     lives: 5,
   })
   const [endMessage, setEndMessage] = useState('Error')
+
+  useEffect(() => {
+    playCorrectAnswerChime()
+  }, [playerScore])
+
+  useEffect(() => {
+    playIncorrectAnswerChime()
+  }, [playerLives])
 
   const { isLoading, isError, data } = useQuery({
     queryKey: ['randomPokemon'],
@@ -41,6 +51,15 @@ function PokiGuess() {
     return Array.from(randomPokemonSet)
   }
 
+  function playCorrectAnswerChime() {
+    new Audio(correct).play()
+    console.log('ding')
+  }
+  function playIncorrectAnswerChime() {
+    new Audio(incorrect).play()
+    console.log('ding')
+  }
+
   const placement = [0, 1, 2, 3]
   function shuffleArray(array: number[]) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -48,11 +67,6 @@ function PokiGuess() {
       ;[array[i], array[j]] = [array[j], array[i]]
     }
   }
-
-  // function playCorrect() {}
-  // function playIncorrect() {}
-
-  // useEffect(() => {}, [playerScore])
 
   const handleClick = (event, guessedPokemon: string) => {
     event.preventDefault()
