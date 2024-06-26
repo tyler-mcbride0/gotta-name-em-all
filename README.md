@@ -14,6 +14,9 @@ Includes a leaderboard and data stored in a knex database.
 ```
 npm install # to install dependencies
 npm run dev # to start the dev server
+
+npm run knex migrate:latest # to initialise the database
+npm run knex seed:run # only run this if you would like the leaderboard to have default scores showing.
 ```
 
 You can find the server running on [http://localhost:3000](http://localhost:3000) and the client running on [http://localhost:5173](http://localhost:5173).
