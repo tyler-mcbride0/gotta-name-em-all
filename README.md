@@ -1,7 +1,8 @@
 # Gotta-Name-Em-All
 
 A fun game inspired by kahoot and the "who's that pokemon" episode break, designed for Pokémon enthusiasts to test their knowledge of pokemon sprites.
-```
+
+
 Players are shown a darkened sprite of a randon pokemon pulled from the Pokemon API and a range of four possible pokemon, including the correct one to guess.
 Players have a set amount of lives and a top score to contend for.
 Includes a leaderboard and data stored in a knex database.
